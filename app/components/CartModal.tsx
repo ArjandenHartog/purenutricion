@@ -1,10 +1,33 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
+
+function useDeliveryCountdown() {
+  const [seconds, setSeconds] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Bereken seconden tot volgende "cutoff": willekeurig 23-59 minuten
+    const mins = Math.floor(Math.random() * 37) + 23;
+    setSeconds(mins * 60);
+  }, []);
+
+  useEffect(() => {
+    if (seconds === null || seconds <= 0) return;
+    const t = setInterval(() => setSeconds((s) => (s ?? 1) - 1), 1000);
+    return () => clearInterval(t);
+  }, [seconds]);
+
+  if (seconds === null) return null;
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
 
 export default function CartModal() {
   const { items, removeItem, totalCount, isCartOpen, closeCart, openFraud } =
     useCart();
+  const countdown = useDeliveryCountdown();
 
   const total = items.reduce(
     (sum, i) => sum + i.product.price * i.quantity,
@@ -121,6 +144,20 @@ export default function CartModal() {
                   €{(total >= 25 ? total : total + 4.95).toFixed(2).replace(".", ",")}
                 </span>
               </div>
+              {/* Bezorgdeadline */}
+              {countdown && (
+                <div className="bg-[#c2f500]/10 border border-[#c2f500]/30 px-3 py-2 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-[#c2f500] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  <p className="text-[11px] font-bold text-[#111111]">
+                    Bestel binnen{" "}
+                    <span className="font-black text-[#0d0d0d] font-mono">{countdown}</span>{" "}
+                    voor <span className="font-black">morgen</span> in huis!
+                  </p>
+                </div>
+              )}
+
               <button
                 onClick={() => {
                   closeCart();
