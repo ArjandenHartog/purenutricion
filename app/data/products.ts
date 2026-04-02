@@ -6,7 +6,7 @@ export type Product = {
   originalPrice?: number;
   rating: number;
   reviewCount: number;
-  emoji: string;
+  iconType: "shake" | "leaf" | "protein" | "fish" | "soup" | "pill" | "bar" | "herb";
   badge?: string;
   badgeColor?: string;
   category: "shakes" | "supplements" | "snacks" | "sport";
@@ -22,7 +22,7 @@ export const products: Product[] = [
     originalPrice: 32.99,
     rating: 4.3,
     reviewCount: 1284,
-    emoji: "🍫",
+    iconType: "shake",
     badge: "Bestseller",
     badgeColor: "bg-orange-500",
     category: "shakes",
@@ -35,7 +35,7 @@ export const products: Product[] = [
     price: 14.95,
     rating: 4.1,
     reviewCount: 863,
-    emoji: "🍵",
+    iconType: "leaf",
     category: "supplements",
     description: "Ondersteunt de vetverbranding en stofwisseling",
   },
@@ -47,7 +47,7 @@ export const products: Product[] = [
     originalPrice: 49.99,
     rating: 4.6,
     reviewCount: 2341,
-    emoji: "🥛",
+    iconType: "protein",
     badge: "20% korting",
     badgeColor: "bg-red-600",
     category: "supplements",
@@ -60,7 +60,7 @@ export const products: Product[] = [
     price: 18.50,
     rating: 4.4,
     reviewCount: 1105,
-    emoji: "🐟",
+    iconType: "fish",
     category: "supplements",
     description: "Ondersteunt een gezond hart en helpt bij vetafbraak",
   },
@@ -72,7 +72,7 @@ export const products: Product[] = [
     originalPrice: 27.95,
     rating: 3.9,
     reviewCount: 432,
-    emoji: "🍲",
+    iconType: "soup",
     badge: "Nieuw",
     badgeColor: "bg-green-600",
     category: "shakes",
@@ -85,7 +85,7 @@ export const products: Product[] = [
     price: 29.95,
     rating: 3.7,
     reviewCount: 678,
-    emoji: "💊",
+    iconType: "pill",
     category: "supplements",
     description: "Geconjugeerd linolzuur ter ondersteuning van lichaamssamenstelling",
   },
@@ -97,7 +97,7 @@ export const products: Product[] = [
     originalPrice: 33.99,
     rating: 4.5,
     reviewCount: 1876,
-    emoji: "🍫",
+    iconType: "bar",
     badge: "Populair",
     badgeColor: "bg-[#0000a4]",
     category: "snacks",
@@ -110,7 +110,7 @@ export const products: Product[] = [
     price: 12.99,
     rating: 4.0,
     reviewCount: 543,
-    emoji: "🌿",
+    iconType: "herb",
     category: "supplements",
     description: "14-daags programma ter ondersteuning van spijsvertering",
   },
