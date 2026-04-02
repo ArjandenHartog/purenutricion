@@ -27,7 +27,7 @@ export default function ProductTabs({ product }: { product: Product }) {
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className={`px-6 py-3 text-xs font-black uppercase tracking-widest transition-colors border-b-2 -mb-px ${
+            className={`px-3 md:px-6 py-3 text-[10px] md:text-xs font-black uppercase tracking-widest transition-colors border-b-2 -mb-px ${
               tab === t.id
                 ? "border-[#c2f500] text-[#111111]"
                 : "border-transparent text-[#111111]/40 hover:text-[#111111]/70"

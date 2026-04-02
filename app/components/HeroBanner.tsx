@@ -35,9 +35,9 @@ export default function HeroBanner() {
             </div>
 
             {/* Stats strip */}
-            <div className="flex gap-6 border-t border-black/5 pt-8">
+            <div className="grid grid-cols-2 md:flex md:gap-6 gap-4 border-t border-black/5 pt-8">
               {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
+                <div key={stat.label} className="text-center md:text-left">
                   <div className="text-xl font-black text-[#c2f500]">{stat.value}</div>
                   <div className="text-[10px] text-[#111111]/40 uppercase tracking-widest mt-0.5">{stat.label}</div>
                 </div>
@@ -46,7 +46,7 @@ export default function HeroBanner() {
           </div>
 
           {/* Hero image */}
-          <div className="flex-1 relative h-[420px] md:h-[520px] overflow-hidden">
+          <div className="flex-1 relative h-52 md:h-[520px] overflow-hidden">
             <Image
               src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=600&q=85&auto=format&fit=crop"
               alt="Atleet in de gym"

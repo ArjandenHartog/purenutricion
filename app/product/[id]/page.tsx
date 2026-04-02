@@ -44,9 +44,9 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 py-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-black/5 mb-12">
             {/* Image */}
-            <div className="bg-white relative" style={{ minHeight: 480 }}>
-              <div className="sticky top-4">
-                <div className="relative h-[480px] overflow-hidden bg-[#f5f5f5]">
+            <div className="bg-white relative">
+              <div className="md:sticky md:top-4">
+                <div className="relative h-72 md:h-[480px] overflow-hidden bg-[#f5f5f5]">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: Props) {
             </div>
 
             {/* Info */}
-            <div className="bg-white p-8 md:p-10">
+            <div className="bg-white p-5 md:p-10">
               <p className="text-[10px] text-[#c2f500] font-black uppercase tracking-[0.2em] mb-2">
                 {product.brand}
               </p>
