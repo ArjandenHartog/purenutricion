@@ -3,7 +3,6 @@ import HeroBanner from "./components/HeroBanner";
 import PromoCards from "./components/PromoCards";
 import ProductGrid from "./components/ProductGrid";
 import Footer from "./components/Footer";
-import AwarenessBanner from "./components/AwarenessBanner";
 
 export default function Home() {
   return (

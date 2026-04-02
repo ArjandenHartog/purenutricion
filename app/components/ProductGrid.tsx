@@ -133,7 +133,7 @@ export default function ProductGrid({ title, category }: Props) {
                   </div>
                   <p className="text-xs text-gray-400">Incl. BTW</p>
                 </div>
-                <button className="bg-[#0000a4] hover:bg-[#0000c4] transition-colors text-white rounded-full w-9 h-9 flex items-center justify-center flex-shrink-0">
+                <button onClick={() => addItem(product)} className="bg-[#0000a4] hover:bg-[#0000c4] transition-colors text-white rounded-full w-9 h-9 flex items-center justify-center flex-shrink-0">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                   </svg>
