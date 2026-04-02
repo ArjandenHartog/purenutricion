@@ -4,6 +4,7 @@ import UrgencyBanner from "./components/UrgencyBanner";
 import HeroBanner from "./components/HeroBanner";
 import PromoCards from "./components/PromoCards";
 import ProductGrid from "./components/ProductGrid";
+import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import SocialProofToast from "./components/SocialProofToast";
 
@@ -28,6 +29,7 @@ export default function Home() {
             title="Supplementen & Vitamines"
             category="supplements"
           />
+          <Testimonials />
 
           {/* Lifestyle sectie */}
           <section>
