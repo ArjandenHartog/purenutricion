@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getProductsByCategory } from "../data/products";
 import { useCart } from "../context/CartContext";
@@ -38,12 +39,15 @@ function useProductStats(count: number) {
   const [stats, setStats] = useState<ProductStats[]>([]);
 
   useEffect(() => {
-    setStats(
-      Array.from({ length: count }, () => ({
-        viewers: randomBetween(11, 48),
-        stock: randomBetween(2, 9),
-      }))
-    );
+    // Init via callback om synchrone setState-in-effect te vermijden
+    const init = setTimeout(() => {
+      setStats(
+        Array.from({ length: count }, () => ({
+          viewers: randomBetween(11, 48),
+          stock: randomBetween(2, 9),
+        }))
+      );
+    }, 0);
 
     // Viewers fluctueren elke 8-15 seconden
     const interval = setInterval(() => {
@@ -55,7 +59,10 @@ function useProductStats(count: number) {
       );
     }, randomBetween(8000, 15000));
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(init);
+      clearInterval(interval);
+    };
   }, [count]);
 
   return stats;
@@ -83,8 +90,9 @@ export default function ProductGrid({ title, category }: Props) {
         {displayed.map((product, i) => {
           const stats = productStats[i];
           return (
-          <div
+          <Link
             key={product.id}
+            href={`/product/${product.id}`}
             className="bg-white overflow-hidden hover:bg-[#fafafa] transition-colors cursor-pointer group"
           >
             {/* Image area */}
@@ -161,7 +169,7 @@ export default function ProductGrid({ title, category }: Props) {
                 </button>
               </div>
             </div>
-          </div>
+          </Link>
           );
         })}
       </div>
