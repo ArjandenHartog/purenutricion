@@ -6,9 +6,7 @@ function StarRating({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className={`w-3.5 h-3.5 ${
-            star <= Math.round(rating) ? "text-yellow-400" : "text-gray-300"
-          }`}
+          className={`w-3 h-3 ${star <= Math.round(rating) ? "text-[#c2f500]" : "text-white/10"}`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -26,72 +24,67 @@ type Props = {
 
 export default function ProductGrid({ title, category }: Props) {
   const products = getProductsByCategory(category);
-  const displayed = category === "all" ? products.slice(0, 4) : products.slice(0, 4);
+  const displayed = products.slice(0, 4);
 
   return (
     <section>
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-gray-800">{title}</h2>
-        <button className="text-[#0000a4] text-sm font-semibold hover:underline flex items-center gap-1">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-black text-white uppercase tracking-tight">{title}</h2>
+        <button className="text-[#c2f500] text-xs font-bold uppercase tracking-widest hover:text-white transition-colors flex items-center gap-1">
           Bekijk alles
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </button>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5">
         {displayed.map((product) => (
           <div
             key={product.id}
-            className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group border border-gray-100"
+            className="bg-[#111111] overflow-hidden hover:bg-[#1a1a1a] transition-colors cursor-pointer group"
           >
             {/* Image area */}
-            <div className="bg-gray-50 h-40 flex items-center justify-center relative">
+            <div className="bg-[#0d0d0d] h-44 flex items-center justify-center relative border-b border-white/5">
               <span className="text-7xl">{product.emoji}</span>
               {product.badge && (
-                <span
-                  className={`absolute top-2 left-2 ${product.badgeColor} text-white text-[10px] font-bold px-2 py-0.5 rounded-full`}
-                >
+                <span className="absolute top-3 left-3 bg-[#c2f500] text-[#0d0d0d] text-[10px] font-black uppercase tracking-wider px-2 py-0.5">
                   {product.badge}
                 </span>
               )}
-              <button className="absolute top-2 right-2 w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-opacity hover:text-red-500">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <button className="absolute top-3 right-3 w-7 h-7 bg-[#1a1a1a] border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:border-[#c2f500] hover:text-[#c2f500] text-white/40">
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                 </svg>
               </button>
             </div>
 
             {/* Info */}
-            <div className="p-3">
-              <p className="text-xs text-gray-400 mb-0.5">{product.brand}</p>
-              <h3 className="text-sm font-semibold text-gray-800 leading-tight mb-1 line-clamp-2">
-                {product.name}
-              </h3>
-              <p className="text-xs text-gray-500 mb-2 line-clamp-1">{product.description}</p>
+            <div className="p-4">
+              <p className="text-[10px] text-[#c2f500] uppercase tracking-widest font-bold mb-1">{product.brand}</p>
+              <h3 className="text-sm font-bold text-white leading-tight mb-1 line-clamp-2">{product.name}</h3>
+              <p className="text-xs text-white/30 mb-3 line-clamp-1">{product.description}</p>
 
-              <div className="flex items-center gap-1.5 mb-2">
+              <div className="flex items-center gap-1.5 mb-3">
                 <StarRating rating={product.rating} />
-                <span className="text-xs text-gray-500">({product.reviewCount.toLocaleString("nl")})</span>
+                <span className="text-xs text-white/30">({product.reviewCount.toLocaleString("nl")})</span>
               </div>
 
               <div className="flex items-end justify-between">
                 <div>
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className="text-lg font-black text-white">
                       €{product.price.toFixed(2).replace(".", ",")}
                     </span>
                     {product.originalPrice && (
-                      <span className="text-xs text-gray-400 line-through">
+                      <span className="text-xs text-white/25 line-through">
                         €{product.originalPrice.toFixed(2).replace(".", ",")}
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-gray-400">Incl. BTW</p>
                 </div>
-                <button className="bg-[#0000a4] hover:bg-[#0000c4] transition-colors text-white rounded-full w-9 h-9 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <button className="bg-[#c2f500] hover:bg-[#d4ff00] transition-colors text-[#0d0d0d] w-9 h-9 flex items-center justify-center shrink-0">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                   </svg>
                 </button>
