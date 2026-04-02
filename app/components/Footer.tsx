@@ -26,7 +26,7 @@ export default function Footer() {
           <div>
             <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#c2f500] mb-4">Over ons</h3>
             <ul className="space-y-2.5 text-sm text-white/40">
-              <li><a href="#" className="hover:text-white transition-colors">Over Pure Nutricion</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Over Pure Nutrition</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Onze missie</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Privacybeleid</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Algemene voorwaarden</a></li>
@@ -49,7 +49,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-start justify-between gap-4 mb-6 text-xs text-white/30">
           <div>
-            <p className="font-semibold text-white/50 mb-1">Pure Nutricion B.V.</p>
+            <p className="font-semibold text-white/50 mb-1">Pure Nutrition B.V.</p>
             <p>Sportlaan 42</p>
             <p>1234 AB Amsterdam</p>
             <p>Nederland</p>
@@ -65,10 +65,10 @@ export default function Footer() {
             <div className="bg-[#c2f500] px-2.5 py-0.5">
               <span className="text-[#0d0d0d] font-black text-sm uppercase tracking-tight">pure</span>
             </div>
-            <span className="text-white/30 text-xs font-bold tracking-widest uppercase">nutricion</span>
+            <span className="text-white/30 text-xs font-bold tracking-widest uppercase">nutrition</span>
           </div>
           <p className="text-xs text-white/20 text-center">
-            © 2026 Pure Nutricion. Alle rechten voorbehouden.
+            © 2026 Pure Nutrition. Alle rechten voorbehouden.
           </p>
           <div className="flex items-center gap-4 text-xs text-white/30 font-medium">
             <span>Veilig betalen</span>

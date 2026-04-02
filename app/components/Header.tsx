@@ -35,7 +35,7 @@ export default function Header() {
               </span>
             </div>
             <span className="text-[#111111] font-black text-sm tracking-widest uppercase hidden sm:block">
-              nutricion
+              nutrition
             </span>
           </a>
 
