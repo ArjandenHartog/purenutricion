@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { getProductsByCategory } from "../data/products";
 import { useCart } from "../context/CartContext";
 
@@ -45,8 +46,9 @@ export default function ProductGrid({ title, category }: Props) {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-black/5">
         {displayed.map((product) => (
-          <div
+          <Link
             key={product.id}
+            href={`/product/${product.id}`}
             className="bg-white overflow-hidden hover:bg-[#fafafa] transition-colors cursor-pointer group"
           >
             {/* Image area */}
@@ -104,7 +106,7 @@ export default function ProductGrid({ title, category }: Props) {
                 </button>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
