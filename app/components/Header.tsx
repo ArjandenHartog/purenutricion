@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useCart } from "../context/CartContext";
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { totalCount, openCart } = useCart();
 
   return (
     <>
@@ -104,7 +106,10 @@ export default function Header() {
               </svg>
               <span>Verlanglijst</span>
             </button>
-            <button className="flex flex-col items-center text-xs gap-0.5 hover:text-yellow-300 transition-colors relative">
+            <button
+              onClick={openCart}
+              className="flex flex-col items-center text-xs gap-0.5 hover:text-yellow-300 transition-colors relative"
+            >
               <div className="relative">
                 <svg
                   className="w-6 h-6"
@@ -120,7 +125,7 @@ export default function Header() {
                   />
                 </svg>
                 <span className="absolute -top-1.5 -right-1.5 bg-[#f7a800] text-[#0000a4] text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none">
-                  0
+                  {totalCount}
                 </span>
               </div>
               <span>Winkelwagen</span>

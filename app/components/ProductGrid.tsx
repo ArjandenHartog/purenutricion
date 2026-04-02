@@ -1,4 +1,7 @@
+"use client";
+
 import { getProductsByCategory, Product } from "../data/products";
+import { useCart } from "../context/CartContext";
 
 const iconMap: Record<Product["iconType"], React.ReactNode> = {
   shake: (
@@ -68,6 +71,7 @@ type Props = {
 export default function ProductGrid({ title, category }: Props) {
   const products = getProductsByCategory(category);
   const displayed = products.slice(0, 4);
+  const { addItem } = useCart();
 
   return (
     <section>
