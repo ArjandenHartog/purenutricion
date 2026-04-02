@@ -201,6 +201,36 @@ export const products: Product[] = [
     weight: "28 theezakjes",
     servings: 28,
   },
+  {
+    id: 9,
+    name: "Peptides Creatine HCL",
+    brand: "Peptides",
+    price: 19.99,
+    rating: 4.0,
+    reviewCount: 543, 
+    emoji: "💪",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=350&q=80&auto=format&fit=crop",
+    category: "sport",
+    description: "Peptides Creatine HCL is een creatine peptide die opname van creatine in de spieren helpt versnellen.",
+    features: [
+      "Peptides Creatine HCL is een creatine peptide die opname van creatine in de spieren helpt versnellen.",
+      "Peptides Creatine HCL is een creatine peptide die opname van creatine in de spieren helpt versnellen.",
+    ],
+    weight: "1000mg",
+    servings: 1000,
+  },
+  {
+    id: 9,
+    name: "De Beste Steroiden",
+    brand: "Steroiden",
+    price: 19.99,
+    rating: 4.0,
+    reviewCount: 543, 
+    emoji: "💊",
+    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=350&q=80&auto=format&fit=crop",
+    category: "sport",
+    description: "Steroiden zijn een groep van steroïden die opname van creatine in de spieren helpt versnellen.",
+  },
 ];
 
 export function getProductsByCategory(category: string): Product[] {
