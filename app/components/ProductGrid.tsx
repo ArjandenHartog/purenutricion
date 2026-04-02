@@ -1,8 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { getProductsByCategory } from "../data/products";
 import { useCart } from "../context/CartContext";
+
+function randomBetween(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -26,10 +31,41 @@ type Props = {
   category: string;
 };
 
+// Per-product urgentie stats, gegenereerd client-side om hydration mismatches te vermijden
+type ProductStats = { viewers: number; stock: number };
+
+function useProductStats(count: number) {
+  const [stats, setStats] = useState<ProductStats[]>([]);
+
+  useEffect(() => {
+    setStats(
+      Array.from({ length: count }, () => ({
+        viewers: randomBetween(11, 48),
+        stock: randomBetween(2, 9),
+      }))
+    );
+
+    // Viewers fluctueren elke 8-15 seconden
+    const interval = setInterval(() => {
+      setStats((prev) =>
+        prev.map((s) => ({
+          ...s,
+          viewers: Math.max(8, s.viewers + randomBetween(-3, 3)),
+        }))
+      );
+    }, randomBetween(8000, 15000));
+
+    return () => clearInterval(interval);
+  }, [count]);
+
+  return stats;
+}
+
 export default function ProductGrid({ title, category }: Props) {
   const products = getProductsByCategory(category);
   const displayed = products.slice(0, 4);
   const { addItem } = useCart();
+  const productStats = useProductStats(displayed.length);
 
   return (
     <section>
@@ -44,7 +80,9 @@ export default function ProductGrid({ title, category }: Props) {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-black/5">
-        {displayed.map((product) => (
+        {displayed.map((product, i) => {
+          const stats = productStats[i];
+          return (
           <div
             key={product.id}
             className="bg-white overflow-hidden hover:bg-[#fafafa] transition-colors cursor-pointer group"
@@ -81,6 +119,25 @@ export default function ProductGrid({ title, category }: Props) {
                 <span className="text-xs text-[#111111]/30">({product.reviewCount.toLocaleString("nl")})</span>
               </div>
 
+              {/* Urgentie labels */}
+              {stats && (
+                <div className="space-y-1 mb-3">
+                  {/* Kijkers */}
+                  <div className="flex items-center gap-1.5">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#c2f500] animate-pulse" />
+                    <span className="text-[10px] text-[#111111]/50 font-bold">
+                      {stats.viewers} mensen bekijken dit nu
+                    </span>
+                  </div>
+                  {/* Voorraad */}
+                  {stats.stock <= 5 && (
+                    <p className="text-[10px] font-black text-red-500 uppercase tracking-wide">
+                      ⚠ Nog maar {stats.stock} op voorraad!
+                    </p>
+                  )}
+                </div>
+              )}
+
               <div className="flex items-end justify-between">
                 <div>
                   <div className="flex items-baseline gap-1.5">
@@ -105,7 +162,8 @@ export default function ProductGrid({ title, category }: Props) {
               </div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Header from "./components/Header";
+import UrgencyBanner from "./components/UrgencyBanner";
 import HeroBanner from "./components/HeroBanner";
 import PromoCards from "./components/PromoCards";
 import ProductGrid from "./components/ProductGrid";
 import Footer from "./components/Footer";
+import SocialProofToast from "./components/SocialProofToast";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#f9f9f9] font-sans">
+      <UrgencyBanner />
       <Header />
       <main>
         <HeroBanner />
@@ -79,6 +82,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <SocialProofToast />
     </div>
   );
 }
