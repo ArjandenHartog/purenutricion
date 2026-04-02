@@ -1,3 +1,5 @@
+import TrustpilotWidgetLoader from "./TrustpilotWidgetLoader";
+
 export default function Footer() {
   return (
     <footer className="bg-[#111111] border-t border-white/5 mt-16">
@@ -41,7 +43,24 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/5 pt-8 mb-6">
+          <TrustpilotWidgetLoader />
+        </div>
+
+        <div className="flex flex-col md:flex-row items-start justify-between gap-4 mb-6 text-xs text-white/30">
+          <div>
+            <p className="font-semibold text-white/50 mb-1">Pure Nutricion B.V.</p>
+            <p>Sportlaan 42</p>
+            <p>1234 AB Amsterdam</p>
+            <p>Nederland</p>
+          </div>
+          <div>
+            <p><span className="text-white/20">KvK:</span> 12345678</p>
+            <p><span className="text-white/20">BTW:</span> NL123456789B01</p>
+          </div>
+        </div>
+
+        <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="bg-[#c2f500] px-2.5 py-0.5">
               <span className="text-[#0d0d0d] font-black text-sm uppercase tracking-tight">pure</span>
