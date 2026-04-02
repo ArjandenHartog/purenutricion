@@ -15,7 +15,7 @@ export default function HeroBanner() {
           {/* Text */}
           <div className="flex-1">
             <p className="text-[#c2f500] font-bold text-xs uppercase tracking-[0.2em] mb-4">
-              Pure Nutricion — Sport & Voeding
+              Pure Nutrition — Sport & Voeding
             </p>
             <h1 className="text-5xl md:text-7xl font-black text-[#111111] leading-[0.95] uppercase tracking-tight mb-6">
               Voed je

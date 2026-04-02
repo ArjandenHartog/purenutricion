@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pure Nutricion – Jouw gezonde keuze",
+  title: "Pure Nutrition – Jouw gezonde keuze",
   description: "Bewustwordingssite over gezonde voeding en middelen tegen overgewicht.",
 };
 
