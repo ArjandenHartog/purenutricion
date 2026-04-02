@@ -5,6 +5,7 @@ import { useCart } from "../context/CartContext";
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeTab, setActiveTab] = useState("Alle producten");
   const { totalCount, openCart } = useCart();
 
   return (
@@ -96,24 +97,31 @@ export default function Header() {
         <div className="border-t border-black/5">
           <div className="max-w-7xl mx-auto px-4 flex items-center gap-0 overflow-x-auto scrollbar-hide">
             {[
-              "Alle producten",
-              "Eiwitten",
-              "Pre-workout",
-              "Creatine",
-              "Vitamines",
-              "Maaltijdvervangers",
-              "Snacks",
-              "Aanbiedingen",
-            ].map((item, i) => (
+              { label: "Alle producten", sectionId: "alle-producten" },
+              { label: "Eiwitten", sectionId: "shakes" },
+              { label: "Pre-workout", sectionId: "supplements" },
+              { label: "Creatine", sectionId: "supplements" },
+              { label: "Vitamines", sectionId: "supplements" },
+              { label: "Maaltijdvervangers", sectionId: "shakes" },
+              { label: "Snacks", sectionId: "snacks" },
+              { label: "Aanbiedingen", sectionId: "alle-producten" },
+            ].map(({ label, sectionId }) => (
               <button
-                key={item}
+                key={label}
+                onClick={() => {
+                  setActiveTab(label);
+                  const el = document.getElementById(sectionId);
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
                 className={`whitespace-nowrap text-sm py-3 px-4 transition-colors border-b-2 ${
-                  i === 0
+                  activeTab === label
                     ? "text-[#111111] border-[#c2f500] font-bold"
                     : "text-[#111111]/40 border-transparent hover:text-[#111111] hover:border-black/10"
                 }`}
               >
-                {item}
+                {label}
               </button>
             ))}
           </div>
