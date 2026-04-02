@@ -1,15 +1,6 @@
 export default function Footer() {
   return (
     <footer className="bg-[#f0f0f0] border-t border-gray-200 mt-12">
-      {/* Disclaimer */}
-      <div className="bg-amber-50 border-t-2 border-amber-400 py-4">
-        <div className="max-w-7xl mx-auto px-4">
-          <p className="text-sm text-amber-800 text-center">
-            <strong>Bewustwordingswebsite:</strong> Pure Nutricion is een fictieve webshop gemaakt om bewustzijn te creëren rondom overgewicht en gezonde voeding. Dit is <em>geen echte winkel</em> — er kunnen geen producten worden gekocht. Raadpleeg altijd een gecertificeerde diëtist of huisarts voor persoonlijk advies.
-          </p>
-        </div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
@@ -58,7 +49,7 @@ export default function Footer() {
             <span className="text-gray-600 text-xs font-medium">nutricion</span>
           </div>
           <p className="text-xs text-gray-400 text-center">
-            © 2026 Pure Nutricion — Bewustwordingswebsite. Alle rechten voorbehouden.
+            © 2026 Pure Nutricion. Alle rechten voorbehouden.
           </p>
           <div className="flex items-center gap-4 text-xs text-gray-500">
             <span className="flex items-center gap-1">

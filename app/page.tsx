@@ -8,7 +8,6 @@ import AwarenessBanner from "./components/AwarenessBanner";
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#f7f7f7] font-sans">
-      <AwarenessBanner />
       <Header />
       <main>
         <HeroBanner />
