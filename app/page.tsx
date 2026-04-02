@@ -6,22 +6,22 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f7f7f7] font-sans">
+    <div className="min-h-screen bg-[#0d0d0d] font-sans">
       <Header />
       <main>
         <HeroBanner />
-        <div className="max-w-7xl mx-auto px-4 py-6 space-y-8">
+        <div className="max-w-7xl mx-auto px-4 py-10 space-y-12">
           <PromoCards />
           <ProductGrid
-            title="Populaire producten tegen overgewicht"
+            title="Bestsellers"
             category="all"
           />
           <ProductGrid
-            title="Maaltijdvervangers &amp; shakes"
+            title="Eiwitten & Shakes"
             category="shakes"
           />
           <ProductGrid
-            title="Supplementen &amp; vitamines"
+            title="Supplementen & Vitamines"
             category="supplements"
           />
         </div>
