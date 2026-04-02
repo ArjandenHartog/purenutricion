@@ -1,37 +1,8 @@
 "use client";
 
-import { getProductsByCategory, Product } from "../data/products";
+import Image from "next/image";
+import { getProductsByCategory } from "../data/products";
 import { useCart } from "../context/CartContext";
-
-function ProductIcon({ category }: { category: Product["category"] }) {
-  if (category === "shakes") {
-    return (
-      <svg className="w-12 h-12 text-[#111111]/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15M14.25 3.104c.251.023.501.05.75.082M19.8 15a2.25 2.25 0 0 1 .45 1.328V19.5a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25v-3.172a2.25 2.25 0 0 1 .45-1.328L5 14.5m14.8.5-3.2-3.2M5 14.5l3.45-3.45" />
-      </svg>
-    );
-  }
-  if (category === "snacks") {
-    return (
-      <svg className="w-12 h-12 text-[#111111]/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-      </svg>
-    );
-  }
-  if (category === "sport") {
-    return (
-      <svg className="w-12 h-12 text-[#111111]/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-      </svg>
-    );
-  }
-  // supplements (default)
-  return (
-    <svg className="w-12 h-12 text-[#111111]/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-    </svg>
-  );
-}
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -79,8 +50,14 @@ export default function ProductGrid({ title, category }: Props) {
             className="bg-white overflow-hidden hover:bg-[#fafafa] transition-colors cursor-pointer group"
           >
             {/* Image area */}
-            <div className="bg-[#f5f5f5] h-44 flex items-center justify-center relative border-b border-black/5">
-              <ProductIcon category={product.category} />
+            <div className="bg-[#f5f5f5] h-44 relative border-b border-black/5 overflow-hidden">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
               {product.badge && (
                 <span className="absolute top-3 left-3 bg-[#c2f500] text-[#0d0d0d] text-[10px] font-black uppercase tracking-wider px-2 py-0.5">
                   {product.badge}

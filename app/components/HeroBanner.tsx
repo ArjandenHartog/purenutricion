@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const stats = [
   { value: "50.000+", label: "Tevreden klanten" },
   { value: "200+", label: "Producten" },
@@ -23,7 +25,7 @@ export default function HeroBanner() {
             <p className="text-[#111111]/50 text-base mb-8 max-w-md leading-relaxed">
               Topkwaliteit eiwitten, creatine, pre-workout en supplementen voor sporters die het verschil willen maken.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mb-10">
               <button className="bg-[#c2f500] text-[#0d0d0d] font-black text-sm uppercase tracking-wider px-8 py-4 hover:bg-[#d4ff00] transition-colors">
                 Shop nu
               </button>
@@ -31,19 +33,29 @@ export default function HeroBanner() {
                 Bekijk aanbiedingen
               </button>
             </div>
+
+            {/* Stats strip */}
+            <div className="flex gap-6 border-t border-black/5 pt-8">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-xl font-black text-[#c2f500]">{stat.value}</div>
+                  <div className="text-[10px] text-[#111111]/40 uppercase tracking-widest mt-0.5">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Stats */}
-          <div className="flex-1 grid grid-cols-2 gap-px bg-black/5 border border-black/5">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="bg-white p-8 flex flex-col items-center justify-center text-center hover:bg-[#f5f5f5] transition-colors"
-              >
-                <span className="text-3xl font-black text-[#c2f500] mb-1">{stat.value}</span>
-                <span className="text-xs text-[#111111]/40 uppercase tracking-widest">{stat.label}</span>
-              </div>
-            ))}
+          {/* Hero image */}
+          <div className="flex-1 relative h-[420px] md:h-[520px] overflow-hidden">
+            <Image
+              src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=600&q=85&auto=format&fit=crop"
+              alt="Atleet in de gym"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           </div>
         </div>
       </div>
